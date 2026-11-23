@@ -3,7 +3,7 @@ from fastapi import FastAPI
 
 from app.materias import router          # ← nuevo
 
-app = FastAPI(title="API de Planes de Gimnasio", version="1.0.0")
+app = FastAPI(title="API de Materias", version="1.0.0")
 app.include_router(router)               # ← nuevo
 
 

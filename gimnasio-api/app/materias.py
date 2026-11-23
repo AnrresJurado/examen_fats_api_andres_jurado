@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from app.datos import PLANES
 from app.esquemas import Plan, PlanActualizar, PlanCrear
 
-router = APIRouter(prefix="/planes", tags=["planes"])
+router = APIRouter(prefix="/planes", tags=["Planes"])
 
 
 def obtener_plan(codigo: str) -> dict:
