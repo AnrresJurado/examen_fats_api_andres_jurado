@@ -16,7 +16,7 @@ def obtener_plan(codigo: str) -> dict:
             return materia
     raise HTTPException(
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f"No existe la materia '{codigo}'",
+        detail=f"No existe el plan con el codigo '{codigo}'",
     )
 
 
@@ -25,7 +25,7 @@ PlanEncontrado = Annotated[dict, Depends(obtener_plan)]
 # app/materias.py — segunda parte: el CRUD
 
 
-@router.get("", response_model=list[Plan])
+@router.get("")
 def listar_planes(
     nivel: Annotated[int | None, Query(ge=1, le=10)] = None,
     incluye_entrenador: bool = False,
@@ -49,12 +49,12 @@ def crear_plan(nueva: PlanCrear) -> dict:
     return PLANES[-1]
 
 
-@router.get("/{codigo}", response_model=Plan)
+@router.get("/{codigo}")
 def ver_plan_codigo(plan: PlanEncontrado) -> dict:
     return plan
 
 
-@router.put("/{codigo}", response_model=Plan)
+@router.put("/{codigo}")
 def actualizar_materia(cambios: PlanActualizar, plan: PlanEncontrado) -> dict:
     plan.update(cambios.model_dump(exclude_unset=True))
     return plan
