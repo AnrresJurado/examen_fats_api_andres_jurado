@@ -17,7 +17,7 @@ class PlanCrear(PlanBase):
 class PlanActualizar(BaseModel):
     # Todos opcionales: en un PUT parcial, lo que no se envía no se toca.
     nombre: str | None = Field(default=None, min_length=3, max_length=60)
-    precio_mensual: int | None = Field(default=None, ge=1, le=10)
+    precio_mensual: int | None = Field(default=None, ge=1, le=20)
     nivel: int | None = Field(default=None, ge=1, le=10)
     incluye_entrenador: bool | None = None
 
